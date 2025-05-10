@@ -10,7 +10,9 @@ from oauth2client.service_account import ServiceAccountCredentials
 # ✅ Функція запису в Google Таблицю
 def write_to_google_sheet(data: dict):
     scope = ['https://spreadsheets.google.com/feeds', 'https://www.googleapis.com/auth/drive']
-    creds = ServiceAccountCredentials.from_json_keyfile_name('credentials/alpha-platforms-app-8e42f652eaa2.json', scope)
+    import json
+    creds_info = json.loads(os.environ.get("GOOGLE_CREDS_JSON"))
+    creds = ServiceAccountCredentials.from_json_keyfile_dict(creds_info, scope)
     client = gspread.authorize(creds)
 
     # 📌 Вкажи назву своєї Google Таблиці
