@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="manifest" href="{{ url_for('static', filename='manifest.json') }}">
+    <meta name="theme-color" content="#0d6efd">
+
+  <title>SSP Group</title>
+</head>
+<body>
+    <script>
+        if ('serviceWorker' in navigator) {
+          navigator.serviceWorker.register('/static/service-worker.js')
+            .then(function () {
+              console.log('Service Worker зареєстровано!');
+            });
+        }
+      </script>
+      
+  <img src="{{ url_for('static', filename='images/Logo4.png') }}" width="200">
+  <h1>Welcome to SSP Group</h1>
+  <ul>
+    <li><a href="/department/alpha">Alpha Platforms</a></li>
+    <li><a href="/department/window">Window Cleaning</a></li>
+    <li><a href="/department/commercial">Commercial Cleaning</a></li>
+  </ul>
+</body>
+</html>
