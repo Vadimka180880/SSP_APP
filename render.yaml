@@ -2,9 +2,7 @@ services:
   - type: web
     name: SSP_APP
     env: python
-    buildCommand: |
-      pip install gunicorn
-      pip install -r requirements.txt
-    startCommand: gunicorn app:app
+    buildCommand: pip install -r requirements.txt
+    startCommand: python app.py
     plan: free
     autoDeploy: true
