@@ -2,3 +2,4 @@ flask
 werkzeug
 gspread
 oauth2client
+gunicorn
