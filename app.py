@@ -33,6 +33,10 @@ app = Flask(__name__)
 app.secret_key = 'your-secret-key'
 app.config['UPLOAD_FOLDER'] = 'static/uploads'
 
+# 🛠 Створюємо директорію, якщо її немає (щоб уникнути FileNotFoundError)
+os.makedirs(app.config['UPLOAD_FOLDER'], exist_ok=True)
+print("✅ Папка для фото:", app.config['UPLOAD_FOLDER'])
+
 # 1. Головна — вибір департаменту
 @app.route('/')
 def home():
@@ -91,4 +95,3 @@ def logout():
 # 🔁 Запуск сервера
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=int(os.environ.get('PORT', 5000)))
-
