@@ -57,7 +57,37 @@ def login(name):
 
     return render_template('login.html', department=name)
 
-# 3. Форма після логіну
+# 3. Форма для Alpha Platforms
+@app.route('/alpha/form', methods=['GET', 'POST'])
+def alpha_form():
+    if 'user' not in session:
+        return redirect(url_for('login', name='alpha'))
+
+    if request.method == 'POST':
+        name_input = request.form['name']
+        comment = request.form['comment']
+        photo = request.files['photo']
+
+        if photo:
+            filename = secure_filename(photo.filename)
+            photo_path = os.path.join(app.config['UPLOAD_FOLDER'], filename)
+            photo.save(photo_path)
+
+            # Відправити в Google Таблицю
+            write_to_google_sheet({
+                'name': name_input,
+                'email': session.get('user'),
+                'department': 'alpha',
+                'comment': comment,
+                'photo_url': url_for('static', filename='uploads/' + filename, _external=True)
+            })
+
+            return render_template('success.html', name=name_input, filename=filename)
+
+    return render_template('form_alpha.html')
+
+
+# 4. Форма після логіну
 @app.route('/department/<name>/form', methods=['GET', 'POST'])
 def form(name):
     if 'user' not in session:
@@ -86,7 +116,7 @@ def form(name):
 
     return render_template('form.html', department=name)
 
-# 4. Вихід
+# 5. Вихід
 @app.route('/logout')
 def logout():
     session.pop('user', None)

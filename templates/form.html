@@ -1,20 +1,40 @@
 <!DOCTYPE html>
-<html>
-<head><title>Form — {{ department }}</title></head>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Форма звіту — Альфа</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='alpha-style.css') }}">
+</head>
 <body>
-  <h2>{{ department.title() }} — Daily Form</h2>
-  <form method="POST" enctype="multipart/form-data">
-    <label>Ваше ім’я:</label><br>
-    <input type="text" name="name" required><br><br>
+  <header class="alpha-header">
+    <div class="container">
+      <img src="{{ url_for('static', filename='logo-alpha.svg') }}" alt="Alpha Platforms" class="logo">
+    </div>
+  </header>
 
-    <label>Коментар:</label><br>
-    <textarea name="comment" required></textarea><br><br>
+  <main class="form-section">
+    <div class="container">
+      <h1>Надіслати звіт</h1>
+      <form method="POST" enctype="multipart/form-data">
+        <label for="name">Ім’я</label>
+        <input type="text" id="name" name="name" required>
 
-    <label>Фото:</label><br>
-    <input type="file" name="photo" accept="image/*" capture="environment">
-    <button type="submit">Надіслати</button>
-  </form>
-  <br>
-  <a href="/logout">Вийти</a>
+        <label for="comment">Коментар</label>
+        <textarea id="comment" name="comment" rows="4" required></textarea>
+
+        <label for="photo">Фото (з камери або файлу)</label>
+        <input type="file" id="photo" name="photo" accept="image/*" required>
+
+        <button type="submit" class="btn-primary">Надіслати</button>
+      </form>
+    </div>
+  </main>
+
+  <footer class="alpha-footer">
+    <div class="container">
+      <p>&copy; 2025 Alpha Platforms</p>
+    </div>
+  </footer>
 </body>
 </html>
