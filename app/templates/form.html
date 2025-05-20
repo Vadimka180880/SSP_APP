@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+
+{% block title %}Form — Alpha Platforms{% endblock %}
+
+{% block content %}
+  <h2>Inspection Form</h2>
+  <form method="POST" enctype="multipart/form-data" class="form">
+    <label>Name: <input type="text" name="name" required></label><br />
+    <label>Comment: <textarea name="comment" required></textarea></label><br />
+    <label>Upload Photo:
+      <input type="file" name="photo" accept="image/*" capture="environment" required>
+    </label><br />
+    <button type="submit">Submit</button>
+  </form>
+{% endblock %}
