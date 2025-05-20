@@ -1,0 +1,9 @@
+# Python
+__pycache__/
+*.pyc
+
+# Flask uploads
+static/uploads/
+
+# Google API credentials
+credentials/

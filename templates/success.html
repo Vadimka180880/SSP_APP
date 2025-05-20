@@ -1,0 +1,11 @@
+<!DOCTYPE html>
+<html>
+<head><title>Успішно</title></head>
+<body>
+  <h2>Дякуємо, {{ name }}!</h2>
+  <p>Вашу форму надіслано.</p>
+  <img src="{{ url_for('static', filename='uploads/' + filename) }}" width="200">
+  <br><br>
+  <a href="/">На головну</a>
+</body>
+</html>
