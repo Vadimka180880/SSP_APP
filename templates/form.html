@@ -1,40 +1,13 @@
-<!DOCTYPE html>
-<html lang="uk">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Форма звіту — Альфа</title>
-  <link rel="stylesheet" href="{{ url_for('static', filename='alpha-style.css') }}">
-</head>
-<body>
-  <header class="alpha-header">
-    <div class="container">
-      <img src="{{ url_for('static', filename='logo-alpha.svg') }}" alt="Alpha Platforms" class="logo">
-    </div>
-  </header>
-
-  <main class="form-section">
-    <div class="container">
-      <h1>Надіслати звіт</h1>
-      <form method="POST" enctype="multipart/form-data">
-        <label for="name">Ім’я</label>
-        <input type="text" id="name" name="name" required>
-
-        <label for="comment">Коментар</label>
-        <textarea id="comment" name="comment" rows="4" required></textarea>
-
-        <label for="photo">Фото (з камери або файлу)</label>
-        <input type="file" id="photo" name="photo" accept="image/*" required>
-
-        <button type="submit" class="btn-primary">Надіслати</button>
-      </form>
-    </div>
-  </main>
-
-  <footer class="alpha-footer">
-    <div class="container">
-      <p>&copy; 2025 Alpha Platforms</p>
-    </div>
-  </footer>
-</body>
-</html>
+{% extends "base.html" %}
+{% block title %}Form — Alpha Platforms{% endblock %}
+{% block content %}
+  <h2>Inspection Form</h2>
+  <form method="POST" enctype="multipart/form-data" class="form">
+    <label>Name: <input type="text" name="name" required></label><br />
+    <label>Comment: <textarea name="comment" required></textarea></label><br />
+    <label>Upload Photo:
+      <input type="file" name="photo" accept="image/*" required>
+    </label><br />
+    <button type="submit">Submit</button>
+  </form>
+{% endblock %}
