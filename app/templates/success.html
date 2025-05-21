@@ -1,12 +1,12 @@
+from datetime import datetime
+
 {% extends "base.html" %}
-
-{% block title %}Success — Alpha Platforms{% endblock %}
-
+{% block title %}Success — Alpha{% endblock %}
 {% block content %}
   <h2>Form submitted successfully!</h2>
   <p>Thank you, {{ name }}.</p>
-  <p>Your photo:</p>
+  <p>Your uploaded photo:</p>
   <img src="{{ url_for('static', filename='uploads/' ~ filename) }}" alt="Uploaded photo" width="300" />
-  <br /><br />
-  <a href="/">Return Home</a>
+  <br><br>
+  <a href="/">Back to Home</a>
 {% endblock %}
