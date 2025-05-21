@@ -1,7 +1,9 @@
+from datetime import datetime
+
 {% extends "base.html" %}
 {% block title %}Головна — Alpha Platforms{% endblock %}
 {% block content %}
-  <h1>Welcome to Alpha Platforms</h1>
+  {% comment %} <h1>Welcome to Alpha Platforms</h1> {% endcomment %}
   <ul class="horizontal-list">
     <li><a href="/login">Login</a></li>
     <li><a href="/form">Submit Form</a></li>
