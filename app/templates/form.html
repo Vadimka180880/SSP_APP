@@ -1,5 +1,3 @@
-from datetime import datetime
-
 {% extends "base.html" %}
 {% block title %}Form — Alpha Platforms{% endblock %}
 {% block content %}
@@ -11,7 +9,5 @@ from datetime import datetime
       <input type="file" name="photo" accept="image/*" required>
     </label><br />
     <button type="submit">Submit</button>
-  </form>
-
-  return render_template("home.html", current_year=datetime.now().year)
+  </form>  
 {% endblock %}
